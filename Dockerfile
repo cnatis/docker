@@ -2,6 +2,10 @@ FROM docker:stable
 
 RUN apk add --no-cache git openssh-client curl unzip bash ttf-dejavu coreutils
 
+# Install Java
+RUN apk add openjdk8-jre-base --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted \
+    && rm -rf /var/cache/apk/*
+
 ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
